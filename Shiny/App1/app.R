@@ -10,32 +10,41 @@ library(shiny)
 
 # Define UI for application that draws a histogram
 ui <- fluidPage(
-
-    # Application title
-    titlePanel("Old Faithful Geyser Data"),
-
-    # Sidebar with a slider input for number of bins 
-    sidebarLayout(
+  
+  # Application title
+  titlePanel("Exploitation"),
+  
+  testInput("name", "Le nom de votre exploitation est:"),
+  
+  # Sidebar with a slider input for number of bins 
+  sidebarLayout(
         sidebarPanel(
-            sliderInput("bins",
-                        "Number of bins:",
-                        min = 1,
-                        max = 50,
-                        value = 30)
-        ),
-
-        # Show a plot of the generated distribution
-        mainPanel(
-           plotOutput("distPlot")
-        )
-    )
+            sliderInput("Taille",
+                        "Superficie de votre exploitation:",
+                        min = 0,5,
+                        max = 500,
+                        value = 30),
+            
+            
+  numericInput("Mais", "Nombre d'ha de Mais:" ),
+  
+  numericInput("Orge", "Nombre d'ha d'Orge:"),
+ 
+  numericInput("Ble", "Nombre d'ha de Ble:"),
+       
+    
+        # montrer le diagramme camembert 
+           plotOutput("camembert")
+      )
+   )
 )
+
 
 # Define server logic required to draw a histogram
 server <- function(input, output) {
 
-    output$distPlot <- renderPlot({
-        # generate bins based on input$bins from ui.R
+    output$camembert <- renderPlot({
+        # generate Taille based on input$taille from ui.R
         x    <- faithful[, 2]
         bins <- seq(min(x), max(x), length.out = input$bins + 1)
 
