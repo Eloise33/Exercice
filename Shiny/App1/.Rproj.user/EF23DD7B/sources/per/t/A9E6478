@@ -1,0 +1,25 @@
+{
+    "collab_server" : "",
+    "contents" : "",
+    "created" : 1589201186956.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "3503333779",
+    "id" : "A9E6478",
+    "lastKnownWriteTime" : 1589201323,
+    "last_content_update" : 1589201323585,
+    "path" : "~/github/Exercice/Shiny/App1/app.R",
+    "project_path" : "app.R",
+    "properties" : {
+        "cursorPosition" : "7,1",
+        "scrollLine" : "0"
+    },
+    "read_only" : false,
+    "read_only_alternatives" : [
+    ],
+    "relative_order" : 1,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_source"
+}
