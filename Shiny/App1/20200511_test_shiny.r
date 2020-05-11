@@ -10,16 +10,35 @@ library(shiny)
 
 # Define UI for application that draws a histogram
 ui <- fluidPage(
-  titlePanel("L'application de votre exploitation"),
- 
+  tabsetPanel(
+    tabPanel("Welcome",
+             titlePanel("L'application de votre exploitation"))),
+  
+  
       h2("Créée par Céline et Eloïse"),
       h3("ISARA"),
+  
+  titlePanel(title=div(img(src="logo.png"))),
+  
+   
+  tabsetPanel(
+    tabPanel("Faisons connaissance")),
+  
   textInput("name", "Entrez le nom de votre exploitation"),
-  textOutput("nomexploitation"),
+  
+  tabsetPanel(
+    tabPanel("Traitement des données")),
+  
+  textOutput("nomexploitation"),  
+  
   
   numericInput("ble", "Nombre d'hectares en ble :", 20 ) ,
   numericInput("mais", "Nombre d'hectares en mais :", 20),
   numericInput("orge", "Nombre d'hectares en orge :", 20),
+  
+  tabsetPanel(
+    tabPanel("Répartition de vos cultures")),
+  
   
   # Show a plot of the generated distribution
   plotOutput("camembert")
@@ -27,9 +46,13 @@ ui <- fluidPage(
 
 
 
+
+
+
+
 # Define server logic required to draw a histogram
 server <- function(input, output) {
-  
+ 
   output$nomexploitation <- renderText({
     paste ("Bonjour", input$name, "veuillez entrer les surfaces de vos cultures en ha")
   })
