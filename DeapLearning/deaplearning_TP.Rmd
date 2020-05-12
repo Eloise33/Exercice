@@ -1,0 +1,50 @@
+---
+title: "TP Deap Learning"
+author: Céline Jacqueton, Eloïse Giroud
+date: 12/05/2020
+output: pdf_document
+fig_caption: yes
+number_sections: yes
+toc: yes
+toc_depth: 3
+bibliography: biblio2.bib
+csl: ../iso690-author-date-fr-no-abstract.csl
+---
+\newpage
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+\newpage
+
+# 1. D’après le contexte, à quoi correspondent les variables prédictives et cible?
+
+
+\newpage
+
+# 2. Récupération d'images sur image_search_scraper.py : remarques
+
+
+\newpage
+
+# 3. Proposez une méthode pour réaliser ce travail, puis aﬃchez et interprétez le script Python dataset_splitter.py
+
+\newpage
+
+# 4. Observez et commentez la structure de ce ﬁchier source
+
+\newpage
+
+# 5. Lancement de l’apprentissage sur le corpus d’apprentissage précédemment créé: remarques:
+
+
+\newpage
+
+# 6. Testez ces diﬀérents modèles et interprétez les données du ﬁchier models.csv au moyen de la technique de votre choix (par exemple avec R)
+
+\newpage
+
+
+
+
+
