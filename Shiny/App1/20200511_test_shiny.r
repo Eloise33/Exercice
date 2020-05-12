@@ -53,10 +53,12 @@ ui <- fluidPage(
   
   textOutput("nomexploitation"),  
   
-  numericInput("ble", "Nombre d'hectares en ble :", 25 ) ,
+  numericInput("ble", "Nombre d'hectares en ble :", 25),
   numericInput("mais", "Nombre d'hectares en mais :", 25),
   numericInput("orge", "Nombre d'hectares en orge :", 25),
   numericInput("colza", "Nombre d'hectares en colza:", 25),
+  
+  validate(100-input$ble-input$mais-input$orge-input$colza),
   
   tabsetPanel(
     tabPanel("Répartition de vos cultures")),
@@ -80,8 +82,9 @@ server <- function(input, output) {
   })
   
   output$camembert <- renderPlot({
-    valeurs <- c(input$ble,input$mais,input$orge, input$colza)
-    pie(valeurs,col=c("#AAFFAA","#FFEE44","#FFAAAA", "#EEEEFF"),labels=c("Ble","Mais","Orge", "Colza"),main="Répartition des cultures",cex=1.5)
+    values <- c(input$ble,input$mais,input$orge, input$colza)
+    proportions <- round(values/input$taille*100)
+    pie(values,col=c("#AAFFAA","#FFEE44","#FFAAAA", "#EEEEFF"),labels=c(paste("Ble",proportions[1],"%"), paste("Mais", proportions[2],"%"), paste("Orge", proportions[3],"%"), paste("Colza", proportions[4],"%")),main="Répartition des cultures",cex=1.5)
     
   })
 }
@@ -89,5 +92,5 @@ server <- function(input, output) {
 # Run the application 
 shinyApp(ui = ui, server = server)
 
-    
+
     
