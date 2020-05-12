@@ -16,6 +16,7 @@ ui <- fluidPage(
   
   tabsetPanel(id = "tabs",
               tabPanel(value = "tab1", title = "Welcome",
+                       h1("L'application de gestion de votre exploitation"),
                        h2("Crées par Céline et Eloïse"),
                        h3("ISARA"),
                        titlePanel(title=div(img(src="logo.png"))),
@@ -44,6 +45,7 @@ ui <- fluidPage(
               ),
               
               tabPanel(value = "tab3", title = "Entrez les donnees de l'exploitation",
+                       
                        textOutput("nomexploitation"),  
                        
                        numericInput("ble", "Nombre d'hectares en ble :", 25),
@@ -57,7 +59,8 @@ ui <- fluidPage(
               
               tabPanel(value = "tab4", title = "Repartition des cultures",
                        # Show a plot of the generated distribution
-                       plotOutput("camembert")
+                       plotOutput("camembert"),
+                       textOutput("titrecamembert")
               )
   ))
   
@@ -92,6 +95,11 @@ server <- function(input, output) {
     paste ("Bonjour", input$name, "veuillez entrer les surfaces de vos cultures en ha")
   })
   
+  
+  output$titrecamembert <- renderText({
+     paste (input$name,", ci dessus le diagramme de vos cultures")
+  })
+    
   output$camembert <- renderPlot({
     values <- c(input$ble,input$mais,input$orge, input$colza)
     proportions <- round(values/input$taille*100)
