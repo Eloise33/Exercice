@@ -58,7 +58,6 @@ ui <- fluidPage(
   numericInput("orge", "Nombre d'hectares en orge :", 25),
   numericInput("colza", "Nombre d'hectares en colza:", 25),
   
-  validate(100-input$ble-input$mais-input$orge-input$colza),
   
   tabsetPanel(
     tabPanel("RÃÂ©partition de vos cultures")),
