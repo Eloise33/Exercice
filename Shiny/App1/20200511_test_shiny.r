@@ -7,11 +7,15 @@
 #    http://shiny.rstudio.com/
 #
 library(shiny)
+library("ggplot2")  # Visualisation des données
+library("dplyr")  
 
 # Define UI for application that draws a histogram
 ui <- fluidPage(
+  
   tabsetPanel(
-    tabPanel("Welcome",
+     
+     tabPanel("Welcome",
              titlePanel("L'application de votre exploitation"))),
   
   
@@ -24,17 +28,35 @@ ui <- fluidPage(
   tabsetPanel(
     tabPanel("Faisons connaissance")),
   
+
   textInput("name", "Entrez le nom de votre exploitation"),
   
+  
+  sidebarLayout(
+    sidebarPanel(
+      sliderInput("taille",
+                  "taille de votre exploitation",
+                  min = 1,
+                  max = 500,
+                  value = 30)
+    ),
+    
+    # Show a plot of the generated distribution
+    mainPanel(
+      plotOutput("totalsurface"),
+    )
+  ),
+  
+  
   tabsetPanel(
-    tabPanel("Traitement des données")),
+    tabPanel("Entrées des données de l'exploitation")),
   
   textOutput("nomexploitation"),  
   
-  
-  numericInput("ble", "Nombre d'hectares en ble :", 20 ) ,
-  numericInput("mais", "Nombre d'hectares en mais :", 20),
-  numericInput("orge", "Nombre d'hectares en orge :", 20),
+  numericInput("ble", "Nombre d'hectares en ble :", 25 ) ,
+  numericInput("mais", "Nombre d'hectares en mais :", 25),
+  numericInput("orge", "Nombre d'hectares en orge :", 25),
+  numericInput("colza", "Nombre d'hectares en colza:", 25),
   
   tabsetPanel(
     tabPanel("Répartition de vos cultures")),
@@ -58,8 +80,8 @@ server <- function(input, output) {
   })
   
   output$camembert <- renderPlot({
-    valeurs <- c(input$ble,input$mais,input$orge)
-    pie(valeurs,col=c("#AAFFAA","#FFEE44","#FFAAAA"),labels=c("Ble","Mais","Orge"),main="Répartition des cultures",cex=1.5)
+    valeurs <- c(input$ble,input$mais,input$orge, input$colza)
+    pie(valeurs,col=c("#AAFFAA","#FFEE44","#FFAAAA", "#EEEEFF"),labels=c("Ble","Mais","Orge", "Colza"),main="Répartition des cultures",cex=1.5)
     
   })
 }
