@@ -43,7 +43,6 @@ TT.plot(class.sys = "FR.AISNE.TT")
 ######### triangle de l'Aisne avec données
 TT.plot(class.sys = "FR.AISNE.TT",tri.data = res,main = "Soil texture data")
 
-
 #Code couleur
 
 code_couleur<-colors()[c(72, 72, 72, 72, 72, 72, 142,633,31,640,503,30,257,116,33,135)]

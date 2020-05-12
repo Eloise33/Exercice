@@ -7,7 +7,7 @@
 #    http://shiny.rstudio.com/
 #
 library(shiny)
-library("ggplot2")  # Visualisation des donnÃÂ©es
+library("ggplot2")  # Visualisation des donnÃ©es
 library("dplyr")  
 
 # Define UI for application that draws a histogram
@@ -19,7 +19,7 @@ ui <- fluidPage(
              titlePanel("L'application de votre exploitation"))),
   
   
-      h2("CrÃÂ©ÃÂ©e par CÃÂ©line et EloÃÂ¯se"),
+      h2("Crées par Céline et Eloïse"),
       h3("ISARA"),
   
   titlePanel(title=div(img(src="logo.png"))),
@@ -49,7 +49,7 @@ ui <- fluidPage(
   
   
   tabsetPanel(
-    tabPanel("EntrÃÂ©es des donnÃÂ©es de l'exploitation")),
+    tabPanel("Entrée des données de l'exploitation")),
   
   textOutput("nomexploitation"),  
   
@@ -58,10 +58,9 @@ ui <- fluidPage(
   numericInput("orge", "Nombre d'hectares en orge :", 25),
   numericInput("colza", "Nombre d'hectares en colza:", 25),
   
-  validate(100-input$ble-input$mais-input$orge-input$colza),
   
   tabsetPanel(
-    tabPanel("RÃÂ©partition de vos cultures")),
+    tabPanel("Répartition de vos cultures")),
   
   
   # Show a plot of the generated distribution
@@ -84,7 +83,7 @@ server <- function(input, output) {
   output$camembert <- renderPlot({
     values <- c(input$ble,input$mais,input$orge, input$colza)
     proportions <- round(values/input$taille*100)
-    pie(values,col=c("#AAFFAA","#FFEE44","#FFAAAA", "#EEEEFF"),labels=c(paste("Ble",proportions[1],"%"), paste("Mais", proportions[2],"%"), paste("Orge", proportions[3],"%"), paste("Colza", proportions[4],"%")),main="RÃÂ©partition des cultures",cex=1.5)
+    pie(values,col=c("#AAFFAA","#FFEE44","#FFAAAA", "#EEEEFF"),labels=c(paste("Ble",proportions[1],"%"), paste("Mais", proportions[2],"%"), paste("Orge", proportions[3],"%"), paste("Colza", proportions[4],"%")),main="Répartition des cultures",cex=1.5)
     
   })
 }
