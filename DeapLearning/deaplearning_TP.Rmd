@@ -112,6 +112,18 @@ La solution a préférer est donc peut-être d’augmenter le corpus d’image d
 
 On fait une ACP pour déterminer quels facteurs comptent le * pour avoir le meilleur pourcentage d’apprentissage. Ensuite selon la réponse de l’ACP on peut tracer des graphiques du pourcentage de réussite en fonction de la/des variables sélectionnées .
 
+
+```{r logo, echo=FALSE, out.width = '100%', fig.align = "center",fig.cap="Graphique de corrélation des variables (noms des variables raccourcis pour plus de visibilité)"}
+knitr::include_graphics("acp_2.png")
+```
+
+A la lecture du graphique de corrélation des variables, nous remarquons comme attendu que le pourcentage de réussite est corrélé avec le nombre d'images test et le nombre d'images d'entrainements. 
+
+Nous nous attendions à ce que le pourcentage de réussite soit également corrélé positivement au nombre de neurones. Pourtant il semble qu'ils soient corrélés de manière négative. Il se peut qu'au delà d'un nombre de neurones trop important, le système soit confronté à un surapprentissage: par exemple, Si un réseau est trop entrainé, c'est à dire qu'il arrive surgénéraliser, il est possible qu'en étant entrainé pour reconnaître des animaux de la savane, il arrive à reconnaître un chat comme un lion. Dans ce cas le pourcentage de réussite diminue lorsque le nombre de neurones augmente.
+
+Dans ce cas, nous pensions que le pourcentages de réussite serait corrélé positivement ou négativement au nombre de passes. Or cela ne semble pas être le cas. Cela pourrait signifier que le nombre de passes nécessaire à une reconnaissance optimum doit être déterminé manuellement ("à taton") avec différents essais.
+
+
 \newpage
 
 
